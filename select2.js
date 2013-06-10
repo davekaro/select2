@@ -2162,12 +2162,12 @@ the specific language governing permissions and limitations under the Apache Lic
 
         // single
         onSelect: function (data, options) {
-
             if (!this.triggerSelect(data)) { return; }
 
             var old = this.opts.element.val(),
                 oldData = this.data();
 
+            $(oldData.element[0]).removeClass("select2-current-selection");
             this.opts.element.val(this.id(data));
             this.updateSelection(data);
 
@@ -2183,7 +2183,6 @@ the specific language governing permissions and limitations under the Apache Lic
 
         // single
         updateSelection: function (data) {
-
             var container=this.selection.find("span"), formatted, cssClass;
 
             this.selection.data("select2-data", data);
@@ -2198,6 +2197,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 container.addClass(cssClass);
             }
 
+            $(data.element[0]).addClass("select2-current-selection");
             this.selection.removeClass("select2-default");
 
             if (this.opts.allowClear && this.getPlaceholder() !== undefined) {
