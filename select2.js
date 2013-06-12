@@ -2167,7 +2167,9 @@ the specific language governing permissions and limitations under the Apache Lic
             var old = this.opts.element.val(),
                 oldData = this.data();
 
-            $(oldData.element[0]).removeClass("select2-current-selection");
+            if (oldData.element !== undefined) {
+                $(oldData.element[0]).removeClass("select2-current-selection");
+            }
             this.opts.element.val(this.id(data));
             this.updateSelection(data);
 
@@ -2197,7 +2199,9 @@ the specific language governing permissions and limitations under the Apache Lic
                 container.addClass(cssClass);
             }
 
-            $(data.element[0]).addClass("select2-current-selection");
+            if (data.element !== undefined) {
+                $(data.element[0]).addClass("select2-current-selection");
+            }
             this.selection.removeClass("select2-default");
 
             if (this.opts.allowClear && this.getPlaceholder() !== undefined) {
